@@ -40,9 +40,9 @@ const lang = Astro.currentLocale
 </script>
 
 <script>
-    import * as CookieConsent from 'vanilla-cookieconsent';
+    import {run} from 'vanilla-cookieconsent';
 
-    CookieConsent.run({
+    run({
         autoClearCookies: true,
         categories: {
             necessary: {
