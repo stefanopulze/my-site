@@ -1,5 +1,6 @@
 ---
 import "@styles/main.scss"
+import "vanilla-cookieconsent/dist/cookieconsent.css"
 import Meta from "../components/Meta.astro";
 import Navbar from "../components/PageHeader.astro";
 import PageFooter from "../components/PageFooter.astro";
@@ -12,8 +13,9 @@ interface Props {
 
 const {title, showBrand = false, showLocale = true} = Astro.props;
 const pageTitle = "Stefano Pulze" + (title ? ` - ${title}` : "");
+const lang = Astro.currentLocale
 ---
-<html lang="en">
+<html lang={lang}>
 <head>
     <Meta/>
     <title>{pageTitle}</title>
@@ -26,5 +28,40 @@ const pageTitle = "Stefano Pulze" + (title ? ` - ${title}` : "");
 <Navbar showBrand={showBrand} showLocale={showLocale}/>
 <slot></slot>
 <PageFooter/>
+
+{import.meta.env.PROD &&
+<script is:inline data-service="Google Analytics" type="text/plain" data-category="analytics"
+        src="https://www.googletagmanager.com/gtag/js?id=G-GZEH8CJ8G0"></script>
+<script is:inline data-service="Google Analytics" type="text/plain" data-category="analytics">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){window.dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GZEH8CJ8G0', { 'anonymize_ip': true});
+</script>
+
+<script>
+    import * as CookieConsent from 'vanilla-cookieconsent';
+
+    CookieConsent.run({
+        autoClearCookies: true,
+        categories: {
+            necessary: {
+                enabled: true,
+                readOnly: true
+            },
+            analytics: {
+                enabled: true,
+            }
+        },
+        language: {
+            default: 'it',
+            translations: {
+                'en': './cookie-consent-en.json',
+                'it': './cookie-consent-it.json'
+            }
+        }
+    });
+</script>
+}
 </body>
 </html>

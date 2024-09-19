@@ -1,0 +1,49 @@
+{
+  "consentModal": {
+    "title": "Cookie!!!",
+    "description": "Ciao, questo sito utilizza cookie essenziali per garantirne il corretto funzionamento e cookie di tracciamento per capire come interagisci con esso. Quest'ultimo sarà impostato solo previo consenso.",
+    "acceptAllBtn": "Accetta tutto",
+    "acceptNecessaryBtn": "Rifiuta tutto",
+    "showPreferencesBtn": "Gestisci preferenze"
+  },
+  "preferencesModal": {
+    "title": "Cookies",
+    "acceptAllBtn": "Accetto",
+    "acceptNecessaryBtn": "Rifiuto",
+    "savePreferencesBtn": "Salva preferenze",
+    "closeIconLabel": "Chiudi",
+    "sections": [
+      {
+        "title": "Come uso i Cookie",
+        "description": "Usiamo i cookies per garantire le funzionalità base del sito e migliorare l'esperienza."
+      },
+      {
+        "title": "Performance and Analytics cookies",
+        "description": "Cookie di tracciamento di Google Analytics",
+        "linkedCategory": "analytics",
+        "cookieTable": {
+          "headers": {
+            "name": "Name",
+            "domain": "Service",
+            "description": "Description",
+            "expiration": "Expiration"
+          },
+          "body": [
+            {
+              "name": "_ga",
+              "domain": "Google Analytics",
+              "description": "Cookie set by Google Analytics",
+              "expiration": "Expires after 12 days"
+            },
+            {
+              "name": "_gid",
+              "domain": "Google Analytics",
+              "description": "Cookie set by Google Analytics",
+              "expiration": "Session"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
