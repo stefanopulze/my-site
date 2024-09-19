@@ -1,0 +1,16 @@
+---
+import {Icon} from "astro-icon/components";
+const socials = [
+    {name: "Github", link: "https://github.com/stefanopulze"},
+    {name: "Youtube", link: "https://www.youtube.com/channel/UCKE3lreedL-ML6kmEq4JaFw"},
+    {name: "Linkedin", link: "https://www.linkedin.com/in/stefanopulze/it"},
+    {name: "Twitter", link: "https://twitter.com/stefanopulze"},
+]
+---
+
+{socials.map(social => (
+<a class="nav-item nav-social" href={social.link + '?rel=stefanopulze.com'} title={social.name}
+   target="_blank">
+    <Icon name={social.name.toLowerCase()}/>
+</a>
+    ))}

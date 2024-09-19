@@ -1,0 +1,49 @@
+---
+import type {BlogData} from "../../content/config";
+interface Props {
+    post: BlogData
+    slug: string
+}
+
+const {post, slug} = Astro.props
+---
+<article class="post-card">
+    <a href={`/blog/${slug}`} title={post.title}>
+        <h2 class="post-card-title is-evidence text-mono">{post.title}</h2>
+        <div class="post-tags">
+            {post.tags.map(tag => (<span>#{tag}</span>))}
+        </div>
+        <p class="post-summary">{post.summary}</p>
+    </a>
+</article>
+
+
+<style lang="scss" is:global>
+  .post-card a {
+    padding: 1rem;
+    display: block;
+
+    &:hover {
+      background: var(--primaryColor);
+      color: var(--baseColor);
+    }
+  }
+
+  .post-card-title {
+    display: inline-block;
+    font-size: 2em;
+  }
+
+  .post-tags {
+    margin-block: .5rem;
+    font-size: .8rem;
+    display: flex;
+    gap: 5px;
+    color: var(--baseAlt4Color);
+  }
+
+  .post-summary {
+    /*font-size: .9rem;*/
+    color: var(--txtHintColor);
+  }
+</style>

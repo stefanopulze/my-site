@@ -1,0 +1,32 @@
+.container {
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+.mb-b {
+  margin-block-end: var(--baseSpacing);
+}
+
+.page-footer {
+  margin-block: 4rem;
+  padding-inline: 2rem;
+  display: flex;
+  justify-content: center;
+
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.page-header nav,
+.page-footer nav {
+  color: var(--baseAlt4Color);
+
+
+  a.nav-item:hover {
+    color: var(--txtPrimaryColor);
+  }
+}

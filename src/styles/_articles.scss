@@ -1,0 +1,81 @@
+@use "sass:math";
+$scroll-height: 40vh;
+
+.article-scroll {
+  position: fixed;
+  top: calc(50vh - (#{math.div($scroll-height, 2)}));
+  left: 20px;
+  height: $scroll-height;
+  width: 2px;
+  background: var(--baseAlt1Color);
+  border-radius: 1px;
+  display: none;
+
+  @media only screen and (min-width: 800px) {
+    display: block;
+  }
+
+  .indicator {
+    background: var(--primaryColor);
+    width: 2px;
+  }
+}
+
+.article-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: var(--baseSpacing);
+
+  .posted-on {
+    font-size: .8em;
+    color: var(--txtHintColor)
+  }
+}
+
+article.container {
+  --p-max-width: 65ch;
+  max-width: 65ch;
+  margin-inline: auto;
+
+  p {
+    margin-block-end: 1em;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+  }
+
+  h1 {
+    text-align: left;
+    margin-bottom: 1rem;
+    margin-inline: unset;
+  }
+
+  h2 {
+    font-size: 2rem;
+    color: var(--headline);
+    margin: 1.5em 0 .6em 0;
+    font-weight: 600;
+    font-family: var(--fontMono);
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    font-family: var(--fontMono);
+    margin-block-end: 1rem;
+  }
+
+  pre {
+    font-size: .8em;
+    padding: var(--smSpacing);
+    margin-block-end: var(--smSpacing);
+    font-family: var(--fontMono);
+  }
+
+  img {
+    height: auto;
+  }
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+}

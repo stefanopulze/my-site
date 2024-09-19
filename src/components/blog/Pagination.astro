@@ -1,0 +1,41 @@
+---
+import type {Page} from "astro";
+import {Icon} from "astro-icon/components";
+
+interface Props {
+    page: Page
+}
+
+const {page} = Astro.props
+const paginationList = Array.from({length: page.lastPage}, (_, i) => i + 1);
+---
+<nav aria-label="Blog pages" class="pagination pagination-default">
+    {page.url.prev &&
+            <a class="btn btn-sm" href={page.url.prev} title="Prev page">
+                <Icon name="arrow-left"/>
+                Prev
+            </a>
+    }
+    {
+        paginationList.map((num) => (
+                <a class="btn btn-sm" href={`/blog/${num > 1 ? num : ''}`} title={`Page ${num}`}>
+                    {num}
+                </a>
+        ))
+    }
+    {page.url.next &&
+            <a class="btn btn-sm" href={page.url.next} title="Next page">
+                Next
+                <Icon name="arrow-right"/>
+            </a>
+    }
+</nav>
+
+<style lang="scss" is:global>
+  .pagination {
+    justify-content: center;
+    margin-block-start: var(--baseSpacing);
+    font-size: 0.9rem;
+    gap: 5px;
+  }
+</style>

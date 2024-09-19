@@ -1,0 +1,47 @@
+@import "reset";
+@import "fonts";
+@import "vars";
+
+body {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--bodyColor);
+  color: var(--txtPrimaryColor);
+  font-weight: normal;
+  font-size: 1.1rem;
+  //margin-block-start: 102px;
+}
+
+@import "typography";
+@import "buttons";
+@import "articles";
+@import "layout";
+
+.hero {
+  max-width: 550px;
+  margin: auto;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2em;
+
+  @media (width <= 500px) {
+    margin-inline: 1em;
+  }
+}
+
+.avatar {
+  text-align: center;
+  margin-inline: auto;
+
+  img {
+    $size: 240px;
+    border-radius: 50%;
+    border: 1px solid var(--baseAlt3Color);
+    padding: 4px;
+    width: $size;
+    height: $size;
+  }
+}

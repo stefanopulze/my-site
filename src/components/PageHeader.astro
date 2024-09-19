@@ -1,0 +1,82 @@
+---
+import {Image} from "astro:assets"
+interface Props {
+    showBrand: boolean
+    showLocale: boolean
+}
+const {showBrand = false, showLocale = true} = Astro.props
+
+import me from "@assets/me-yellow.webp"
+import SocialLinks from "./SocialLinks.astro";
+---
+<header class="page-header">
+    {showBrand &&
+            <a href="/" title="Stefano" class="brand text-mono">
+                <Image src={me} alt="Stefan Pulze" width="36" height="36" densities={[2, 3]}/>
+                <span class="text">Stefano Pulze</span>
+            </a>
+    }
+    <nav>
+        {showLocale &&
+                <a href="/" class="nav-item nav-lang">Italiano</a>
+                <a href="/en" class="nav-item nav-lang">English</a>
+        }
+
+        <SocialLinks/>
+
+        <a href="/blog" class="btn nav-btn">Blog</a>
+    </nav>
+</header>
+
+
+<style lang="scss" is:global>
+  .page-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    top: 0;
+    padding: 2rem 2rem;
+    font-size: .85em;
+    background: var(--bodyColor);
+    position: sticky;
+
+    &:has(.brand) {
+      justify-content: space-between;
+    }
+
+    @media (width <= 768px) {
+      justify-content: center;
+    }
+
+    .nav-link {
+      padding: .3rem .6rem;
+    }
+
+    .brand {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+
+      img {
+        border-radius: 50%;
+      }
+
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .nav-social {
+    font-size: 1.3em;
+    padding: 5px 2px
+
+  }
+
+  .nav-lang {
+    @media (width <= 425px) {
+      display: none;
+    }
+  }
+</style>

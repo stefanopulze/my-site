@@ -1,0 +1,16 @@
+---
+import Layout from "./Layout.astro";
+import {Image} from 'astro:assets'
+import me from "../assets/me-yellow.webp"
+---
+<Layout>
+    <main class="hero">
+        <div class="avatar">
+            <Image src={me} alt="Stefano Pulze" width="450" height="450" densities={[2, 3]}/>
+        </div>
+        <h1 class="title text-mono">Stefano Pulze</h1>
+        <div class="has-hover-evidence text-mono">
+            <slot></slot>
+        </div>
+    </main>
+</Layout>

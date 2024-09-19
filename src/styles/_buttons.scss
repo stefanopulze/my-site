@@ -1,0 +1,36 @@
+.btn {
+  background: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: .5em;
+  user-select: none;
+  color: var(--txtPrimaryColor);
+  border: 1px solid var(--txtPrimaryColor);
+  padding-block: var(--btnBlock, 10px);
+  padding-inline: var(--btnInline, 20px);
+  transition: color var(--baseAnimationSpeed), background var(--baseAnimationSpeed);
+  border-radius: var(--btnRadius);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--primaryColor);
+    border-color: var(--primaryColor);
+    color: var(--baseColor);
+  }
+}
+
+.btn.btn-sm {
+  --btnBlock: 5px;
+  --btnInline: 10px;
+  border-color: var(--baseAlt4Color);
+  color: var(--txtHintColor);
+  //background: var(--baseColor);
+  border:none;
+
+  &:hover {
+    background: var(--txtPrimaryColor);
+    border-color: var(--txtPrimaryColor);
+    color: var(--baseColor);
+  }
+}

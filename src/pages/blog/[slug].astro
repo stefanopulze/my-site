@@ -1,0 +1,39 @@
+---
+import {getCollection} from 'astro:content';
+import Layout from "@layouts/Layout.astro";
+import ArticleScrollIndicator from "@components/ArticleScrollIndicator.astro";
+import {formatDate} from "../../utils/formatDate";
+
+export async function getStaticPaths() {
+    const blogEntries = await getCollection('blog');
+    console.log(blogEntries[0])
+    return blogEntries.map(entry => ({
+        params: {slug: entry.slug,},
+        props: {entry},
+    }));
+}
+
+// 2. For your template, you can get the entry directly from the prop
+const {entry} = Astro.props;
+const {Content} = await entry.render();
+---
+<Layout title={entry.data.title} showBrand={true} showLocale={false}>
+    <article class="container">
+        <h1 class="title">{entry.data.title}</h1>
+        <div class="article-details">
+            <div class="tags">
+                {entry.data.tags.map(tag => (
+                        <a href={"/tag/" + tag} class="tag">#{tag}</a>
+                ))}
+            </div>
+            <div class="posted-on">
+                {formatDate(entry.data.date)}
+            </div>
+        </div>
+        <Content/>
+    </article>
+    <footer class="container">
+        <a href="/blog">Back to blog</a>
+    </footer>
+    <ArticleScrollIndicator/>
+</Layout>

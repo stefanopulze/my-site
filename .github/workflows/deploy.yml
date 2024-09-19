@@ -1,0 +1,26 @@
+name: backend-ci
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+
+      - run: bun run install
+      - run: bun run build
+
+      - name: Deploy
+        uses: stefanopulze/ftp-sync@v1.0
+        with:
+          server: "${{secrets.FTP_SERVER}}"
+          username: "${{secrets.FTP_USERNAME}}"
+          password: "${{ secrets.FTP_PASSWORD }}"
+          localDir: 'dist'
+          remoteDir: 'httpdocs'

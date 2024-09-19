@@ -1,0 +1,30 @@
+---
+import "@styles/main.scss"
+import Meta from "../components/Meta.astro";
+import Navbar from "../components/PageHeader.astro";
+import PageFooter from "../components/PageFooter.astro";
+
+interface Props {
+    title?: string;
+    showBrand?: boolean;
+    showLocale?: boolean
+}
+
+const {title, showBrand = false, showLocale = true} = Astro.props;
+const pageTitle = "Stefano Pulze" + (title ? ` - ${title}` : "");
+---
+<html lang="en">
+<head>
+    <Meta/>
+    <title>{pageTitle}</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/fav/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+<Navbar showBrand={showBrand} showLocale={showLocale}/>
+<slot></slot>
+<PageFooter/>
+</body>
+</html>
